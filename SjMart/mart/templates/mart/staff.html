@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Staff</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'mart/style.css' %}">
+        <link rel="stylesheet" href="{% static 'mart/bootstrap.min.css'%}">
+        <link rel="icon" type="image/png" href="{% static 'mart/images/favicon1.png' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <style>
+          .custom-bg-color{
+            background-color: #333;
+          }
+          .custom-bg-color .nav-link{
+            color: white;
+          }
+          .custom-bg-color .nav-link img{
+            width: 150px;
+            height: 40px;
+          }
+          .sidebar {
+              height: 150vh;/* Adjusted height */
+              overflow-y: auto; /* Added to make the sidebar scrollable if content exceeds height */
+          }
+          
+          .head {
+              position: fixed;
+              top: 0;
+              width: 100%;
+              padding: 20px;
+              font-weight: 400;
+              font-size: 1.4em;
+              text-align: center;
+              margin-top: -20px;
+              background-color: white; /* Add a background color */
+              z-index: 1; /* Set a higher z-index to keep it on top */
+          }
+          
+  
+          .head::first-letter{
+            font-size: 1.5em;
+            color: brown;
+            font-size: 2em;
+            font-weight: 1000;
+          }
+          .sidebar-sticky .nav-item a:hover{
+            background-color: rgb(141, 120, 93);
+          }
+          .sidebar-sticky .nav-item a:active{
+              background-color: rgb(141, 120, 93);
+          }
+          .container2 {
+              display: flex;
+              align-items: flex-start;
+              height: 80vh;
+          }
+  
+          .form-column {
+              flex: 1;
+              padding: 20px;
+          }
+  
+          .image-column {
+              flex: 1;
+              padding: 20px;
+          }
+  
+          .image {
+              max-width: 100%;
+              height: auto;
+          }
+          
+          .footer {
+              position: fixed;
+              bottom: 0;
+              width: 80%;
+              margin-left: 19%;
+              background-color: white; /* Add a background color */
+              padding: 10px 0;
+              text-align: center;
+              z-index: 1; /* Set a higher z-index to keep it on top */
+          }
+            </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+              <nav class="col-md-2 d-none d-md-block sidebar custom-bg-color">
+                <div class="sidebar-sticky">
+                  <ul class="nav flex-column">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#"><img src="{% static 'mart/images/logo.png' %}" alt="not found"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'mart:home' %}">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'mart:sales' %}">Sale</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'mart:goods' %}">Stock</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'mart:purchase' %}">Procument</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'mart:suppliers' %}">Suppliers</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'mart:staff' %}">Staff</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'mart:shifts' %}">Shifts</a>
+                      </li>
+                  </ul>
+                </div>
+              </nav>
+          
+              <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                <header class="head">SjMart Inc</header>
+                <div style="margin-top: 70px;margin-bottom: 70px;">
+                <div >
+                    <div class="container3">
+                    <div class="columns">
+                    <table  class="table table-striped">
+                        <caption>Corporate</caption>
+                        <tr>
+                        <th scope="col" colspan="2">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Cell No</th>
+                        </tr>
+                        {% for x in corporate%}
+                        <tr>
+                            <td>{{x.first_name}}</td>
+                            <td>{{x.last_name}}</td>
+                            <td>{{x.email}}</td>
+                            <td>(+254){{x.phone_no}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    </div>
+                    <div class="columns">
+                        <table  class="table table-striped">
+                            <caption>Accountants</caption>
+                            <tr>
+                            <th scope="col" colspan="2">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Cell No</th>
+                            </tr>
+                            {% for x in accountant%}
+                            <tr>
+                                <td>{{x.first_name}}</td>
+                                <td>{{x.last_name}}</td>
+                                <td>{{x.email}}</td>
+                                <td>(+254){{x.phone_no}}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div >
+                    <div class="container3">
+                    <div class="columns">
+                    <table  class="table table-striped">
+                        <caption>Janitors</caption>
+                        <tr>
+                        <th scope="col" colspan="2">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Cell No</th>
+                        </tr>
+                        {% for x in janitor%}
+                        <tr>
+                            <td>{{x.first_name}}</td>
+                            <td>{{x.last_name}}</td>
+                            <td>{{x.email}}</td>
+                            <td>(+254){{x.phone_no}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    </div>
+                    <div class="columns">
+                        <table  class="table table-striped">
+                            <caption>Quality Assuarance</caption>
+                            <tr>
+                            <th scope="col" colspan="2">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Cell No</th>
+                            </tr>
+                            {% for x in quality%}
+                            <tr>
+                                <td>{{x.first_name}}</td>
+                                <td>{{x.last_name}}</td>
+                                <td>{{x.email}}</td>
+                                <td>(+254){{x.phone_no}}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+               <br><br>
+               <div class="footer">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contacts</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Products</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+                </ul>
+                <p class="text-center text-muted">&copy; 2023 SjMart, Inc</p>
+            </div>
+        </div>
+              </main>
+            </div>
+          </div>
+    </body>
+</html>    
